@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zomato/AuthService.dart';
 import 'package:zomato/screens/user_detail_input_screen.dart';
 import 'package:zomato/widget/restaurant_list.dart';
+import 'package:zomato/widget/restaurant_meals.dart';
 
 class HomeScreen extends StatelessWidget {
   Future<DocumentSnapshot> getCurrentUser() {
@@ -27,14 +28,13 @@ class HomeScreen extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               Map<String,dynamic> user = snapshot.data.data;
-              print(user);
               if (user == null) {
                 return UserDetailInputScreen();
               } else {
                 if(user["type"]=="user")
                   return RestaurantList();
                 else
-                  return Text("hello");
+                  return RestaurantMeals();
               }
             } else {
               return Center(

@@ -78,7 +78,7 @@ class _UserDetailInputScreenState extends State<UserDetailInputScreen> {
             "type" : dropdownValue,
             "name" : name
           }
-        ).then((value) => Navigator.pushNamed(context, "/home")).catchError((error){
+        ).then((value) => Navigator.pushReplacementNamed(context, "/home")).catchError((error){
           print(error);
         });
       }
